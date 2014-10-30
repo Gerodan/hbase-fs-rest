@@ -6,7 +6,7 @@ on [HBase](http://hbase.apache.org). It's not very convenient for end-user. So, 
 simplify the operation.
 
 Basically, we use HEAD, GET, PUT, POST, DELETE to manipulate files. The request like this:
-> curl -X HEAD http://${host}:${port}/${version}/${identifier}?${paras}
+> curl -X HEAD http://${host}:${port}/${version}/fs/${identifier}?${paras}
 
  OP     | PARAS          | DESC                              |
 --------|----------------|-----------------------------------|
