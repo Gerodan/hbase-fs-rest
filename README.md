@@ -17,8 +17,10 @@ PUT     | desc="blabla"  | add new file desc                 |
 POST    | desc="blabla"  | add new file with desc            |
 DELETE  |                | delete the file                   |
 
+
 根据REST风格的规范我们如下设计URL
 对应URL一栏前缀例如:http://serverhost:8080/v1
+
 HTTP动词  |  对应URL | 描述  |
 --------|----------------|-----------------------------------|
 HEAD    | files/{fileID}  | 查看文件是否存在,返回状态: 404 或者 200|
