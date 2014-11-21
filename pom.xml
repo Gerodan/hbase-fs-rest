@@ -2,10 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cn.gerodan</groupId>
-	<artifactId>maven-demo</artifactId>
+	<artifactId>jetty_rest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>JettyREST</name>
-	<description>JettyREST</description>
 	<properties>
 		<junit.version>4.11</junit.version>
 		<resteasy.version>3.0.8.Final</resteasy.version>
@@ -27,29 +25,114 @@
 			<version>${junit.version}</version>
 		</dependency>
 		<dependency>
-		  <groupId>org.eclipse.jetty.aggregate</groupId>
-		  <artifactId>jetty-all</artifactId>
-		  <version>9.2.0.RC0</version>
+			<groupId>org.eclipse.jetty.aggregate</groupId>
+			<artifactId>jetty-all</artifactId>
+			<version>9.2.0.RC0</version>
 		</dependency>
 		<dependency>
-		  <groupId>org.jboss.resteasy</groupId>
-		  <artifactId>jaxrs-api</artifactId>
-		  <version>${resteasy.version}</version>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>jaxrs-api</artifactId>
+			<version>${resteasy.version}</version>
 		</dependency>
 		<dependency>
-		  <groupId>org.jboss.resteasy</groupId>
-		  <artifactId>resteasy-jaxrs</artifactId>
-		  <version>${resteasy.version}</version>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+			<version>${resteasy.version}</version>
 		</dependency>
 		<dependency>
-		  <groupId>commons-httpclient</groupId>
-		  <artifactId>commons-httpclient</artifactId>
-  		　　<version>3.1</version>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
 		</dependency>
 		<dependency>
-		  <groupId>com.alibaba</groupId>
-		  <artifactId>fastjson</artifactId>
-		  <version>1.1.41</version>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.1.41</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>UTF-8</encoding>
+					<optimize>true</optimize>
+					<debug>true</debug>
+					<showDeprecation>true</showDeprecation>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- 开发者信息 -->
+	<name>A simple file system based on Hbase via HTTP REST</name>
+	<description>A simple file system based on Hbase via HTTP REST</description>
+	<url>https://github.com/Gerodan/hbase-fs-rest</url>
+	<inceptionYear>2014-11-20</inceptionYear>
+	<developers>
+		<developer>
+			<id>chunhui</id>
+			<name>Chunhui Liu</name>
+			<email>leeychee@gmail.com</email>
+			<url>http://leeychee.github.io/</url>
+			<organization></organization>
+			<organizationUrl></organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>+8</timezone>
+			<properties>
+				<picUrl></picUrl>
+			</properties>
+		</developer>
+		<developer>
+			<id>ZhangYue</id>
+			<name>ZhangYue</name>
+			<email>gerodan10@gmail.com</email>
+			<url>https://github.com/Gerodan</url>
+			<organization></organization>
+			<organizationUrl></organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+8</timezone>
+			<properties>
+				<picUrl></picUrl>
+			</properties>
+		</developer>
+	</developers>
 </project>
