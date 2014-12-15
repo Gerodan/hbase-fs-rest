@@ -14,6 +14,7 @@ import org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher;
 
 public class JettyServer {
 	private static final Logger log = LoggerFactory.getLogger(JettyServer.class);
+	static Server server = new Server(8080);
 	
 	/*
 	 * 启动Jetty的Web服务器功能
@@ -46,10 +47,18 @@ public class JettyServer {
 	}
 	
 	/*
+	 *  关闭Jetty的WebREST服务器功能
+	 */
+	public static void stopJettyWebRESTServer() throws Exception{
+		server.stop();
+		
+		log.info("Jetty Stop :D");
+	}
+	/*
 	 * 启动Jetty的WebREST服务器功能
 	 */
-	private static void startJettyWebRESTServer() throws Exception{
-		Server server = new Server(8080);
+	public static void startJettyWebRESTServer() throws Exception{
+	    server = new Server(8080);
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         ServletHolder h = new ServletHolder(new HttpServletDispatcher());
@@ -57,8 +66,14 @@ public class JettyServer {
         context.addServlet(h, "/*");
         server.setHandler(context);
         try {
-            server.start();
-            server.join();
+        	if(!server.isStarted()&&!server.isStarting()){
+        		server.start();
+                server.join();
+        	}
+        	else{
+        		log.info("Jetty is already Started Up :D");
+        	}
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
